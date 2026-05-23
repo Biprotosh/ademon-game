@@ -10,9 +10,10 @@ public class GameWindow{
     public GameWindow(GamePanel gamePanel){
         jframe = new JFrame(); // initializing jframe
 
-        jframe.setSize(750, 600); // window is 400x400 size
+        jframe.setSize(400, 400); // window is 400x400 size
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // we have to tell jframe explicitly to close the window when close button in pressed
         jframe.add(gamePanel); // attach JPanel with JFrame so that the drawings are rendered inside the gameWindow
+        jframe.setLocationRelativeTo(null); // it spawn the window center of the screen
         jframe.setVisible(true); // used to see the window. (setVisible is false by default)
     }
 }

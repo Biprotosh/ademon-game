@@ -11,6 +11,6 @@ public class Game {
 
         gamePanel = new GamePanel(); // create GamePanel object
         gameWindow = new GameWindow(gamePanel); // create GameWindow object, passing gamePanel to attach gameWindow with gamePanel
-
+        gamePanel.requestFocus(); // gets input focus
     }
 }

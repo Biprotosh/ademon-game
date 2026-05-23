@@ -1,5 +1,8 @@
 package main;
 
+import inputs.KeyboardInputs;
+import inputs.MouseInputs;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,8 +10,14 @@ import java.awt.*;
 // Analogy -> Just like a painting, the wooden frame is the JFrame and the actual painting ing JPanel
 public class GamePanel extends JPanel {
 
-    public GamePanel(){
+    private MouseInputs mouseInputs;
 
+    public GamePanel(){
+        mouseInputs = new MouseInputs();
+
+        addKeyListener(new KeyboardInputs()); // Listens to keyboard inputs
+        addMouseListener(mouseInputs); // Listens to mouse inputs
+        addMouseMotionListener(mouseInputs); // Listens to mouse inputs (Motion)
     }
 
     /**
