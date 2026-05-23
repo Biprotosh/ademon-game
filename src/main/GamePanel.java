@@ -14,8 +14,8 @@ public class GamePanel extends JPanel {
     private int xDelta, yDelta; // expects new x, y axis values
 
     public GamePanel(){
-        mouseInputs = new MouseInputs();
-        xDelta = yDelta = 0; // 0, cause we want to move the paint from the place it sits
+        mouseInputs = new MouseInputs(this); // passing gamePanel so that, it can repaint with the new values
+        xDelta = yDelta = 100; // used to move the paint
 
         addKeyListener(new KeyboardInputs(this)); // Listens to keyboard inputs, passed gamePanel to repaint
         addMouseListener(mouseInputs); // Listens to mouse inputs
@@ -24,12 +24,19 @@ public class GamePanel extends JPanel {
 
     public void changeXDelta(int value){
         this.xDelta += value; // adding new value to xDelta
-        repaint(); // repaints with the new value
+        repaint(); // repaints as per the new value
     }
 
     public void changeYDelta(int value){
         this.yDelta += value; // adding new value to yDelta
-        repaint(); // repaints with the new value
+        repaint(); // repaints as per the new value
+    }
+
+    // sets the new position with new x and new y
+    public void setRectPos(int x, int y){
+        this.xDelta = x; // setting new XDelta value
+        this.yDelta = y; // setting new YDelta value
+        repaint(); // repaints as per the new values
     }
 
     /**
@@ -42,6 +49,7 @@ public class GamePanel extends JPanel {
         // It basically does the cleaning, so that the painting can render without any glitch
         super.paintComponent(g);
 
-        g.fillRect(100 + xDelta, 100 + yDelta, 200, 50);
+//        g.fillRect(100 + xDelta, 100 + yDelta, 200, 50);
+        g.fillRect(xDelta, yDelta, 200, 50);
     }
 }
