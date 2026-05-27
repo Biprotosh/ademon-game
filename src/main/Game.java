@@ -17,12 +17,13 @@ public class Game implements Runnable{
         gamePanel = new GamePanel(); // create GamePanel object
         gameWindow = new GameWindow(gamePanel); // create GameWindow object, passing gamePanel to attach gameWindow with gamePanel
         gamePanel.requestFocus(); // gets input focus
-        startGameLoop();
+
+        startGameLoop(); // start the game loop
     }
 
     private void startGameLoop(){
         gameThread = new Thread(this);
-        gameThread.start();
+        gameThread.start(); // starting the game thread
     }
 
     @Override
@@ -30,13 +31,25 @@ public class Game implements Runnable{
         double timePerFrame = 1000000000.0 / FPS_SET; // calculating how long a frame should last
         long lastFrame = System.nanoTime(); // it stores the time of lastFrame
         long now;
+        int frames = 0;
+        long lastCheck = System.currentTimeMillis();
 
         while (true){
             now = System.nanoTime();
+
+            // frame refresher for repaint a new frame
             if(now - lastFrame >= timePerFrame){
                 // it is time for another frame
                 gamePanel.repaint();
                 lastFrame = now;
+                frames++;
+            }
+
+            // fps checker
+            if(System.currentTimeMillis() - lastCheck >= 1000){
+                lastCheck = System.currentTimeMillis();
+                System.out.println("FPS: " + frames);
+                frames = 0;
             }
         }
     }

@@ -84,7 +84,7 @@ public class GamePanel extends JPanel {
          * This way all characters or other elements will move differently at different times
          * So, we need a good game loop where we can actually stabilize the elements and can set how many frames we want /s
          */
-        repaint();
+//        repaint();
     }
 
     // creates visuals
