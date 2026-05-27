@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
         random = new Random(); // initializing random object
 
         xDelta = yDelta = 100; // used to move the paint
-        xDir = yDir = 0.1; // works as an inverter
+        xDir = yDir = 1f; // works as an inverter
         lastCheck = frames = 0;
 
         addKeyListener(new KeyboardInputs(this)); // Listens to keyboard inputs, passed gamePanel to repaint
